@@ -1,11 +1,9 @@
 package org.lnson.order.service.impl;
 
 import com.alibaba.dubbo.config.annotation.Service;
-import org.lnson.member.pojo.Customer;
 import org.lnson.order.pojo.Product;
 import org.lnson.order.service.OrderService;
 import org.lnson.order.service.impl.base.BaseService;
-import org.lnson.service.common.JsonUtils;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -15,14 +13,14 @@ import java.util.List;
 public class OrderServiceImpl extends BaseService implements OrderService {
     @Override
     public List<Product> list() {
-        // 测试调用会员服务
-        List<Customer> list = memberService.list();
-        System.out.println(JsonUtils.to(list));
         return productBaseDao.selectAll();
     }
 
     @Override
     public Product get() {
+        // 测试调用会员服务
+        System.out.println("会员服务：" + memberService.get());
+
         return productBaseDao.selectByPrimaryKey(10);
     }
 
