@@ -16,7 +16,7 @@ public abstract class BaseService {
     protected CustomerDao customerDao;
 
     // 服务启动时的循环依赖问题，将check设置为false可使服务正确启动
-    @Reference(group = "order-group", version = "1.0.0", check = false)
+    @Reference(group = "order-group", version = "1.0.0")
     protected OrderService orderService;
 
 }
